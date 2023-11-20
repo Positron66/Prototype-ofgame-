@@ -1,0 +1,14 @@
+#pragma once
+//// Check if the player has a firearm in their inventory
+//auto firearmIt = find(inventory.begin(), inventory.end(), "firearm");
+//if (firearmIt != inventory.end())
+//{
+//    cout << "You use the item." << endl;
+//
+//    // Remove the item from the inventory
+//    inventory.erase(firearmIt);
+//}
+//else
+//{
+//    cout << "You don't have the necessary item to unlock the chest." << endl;
+//}
