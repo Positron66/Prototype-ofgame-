@@ -142,3 +142,40 @@ void roomtwo(vector<string>& inventory)
            cout << "the end" << endl;
        }
 }
+
+void roomthree(vector<string>& inventory)
+{
+    bool nextroom = false;
+    string userinput;
+    cout << "room three" << endl;
+   
+    do 
+    {
+        cout << "What would you like to do: ";
+        getline(cin, userinput);
+        if (userinput == "Look" || userinput == "look" || userinput == "Glance" || userinput == "glace" || userinput == "take a look around" || userinput == "Take a look around" || userinput == "take a look" || userinput == "look room" || userinput == "Look room" || userinput == "view room" || userinput == "Look around room" || userinput == "view the room" || userinput == "look at the room" || userinput == "look around" || userinput == "Look around")
+        {
+            cout << "you look at room" << endl;
+        }
+        else if (userinput == "inventory")
+        {
+            if (!inventory.empty())
+            {
+                cout << "Inventory: ";
+                for (const string& item : inventory)
+                {
+                    cout << item << ", ";
+                }
+                cout << endl;
+            }
+            else
+            {
+                cout << "Inventory is empty." << endl;
+            }
+        }
+        else if()
+        {
+
+        }
+    } while (!nextroom);
+}       
