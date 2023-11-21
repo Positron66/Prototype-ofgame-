@@ -164,7 +164,7 @@ void roomthree(vector<string>& inventory)
                 cout << "Inventory: ";
                 for (const string& item : inventory)
                 {
-                    cout << item << ", ";
+                    cout << item << " ";
                 }
                 cout << endl;
             }
@@ -173,9 +173,13 @@ void roomthree(vector<string>& inventory)
                 cout << "Inventory is empty." << endl;
             }
         }
-        else if()
+        else if(userinput == "talk to guy" || userinput == "Talk to guy" || userinput == "speak to man" || userinput == "Speak to man" || userinput == "Converstate with man" || userinput == "talk to the guy" || userinput == "Talk to the guy" || userinput == "Speak to the man" || userinput == "speak to the man")
         {
 
+        }
+        else
+        {
+            cout << "Invaild Input" << endl;
         }
     } while (!nextroom);
 }       
