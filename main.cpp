@@ -158,8 +158,8 @@ void roomone(vector<string>& inventory)
         //shitting self
         else if (toLowercase(userinput) == "shit" || toLowercase(userinput) == "shit pants" || toLowercase(userinput) == "shit myself" || toLowercase(userinput) == "take a shit")
         {
-            auto underwareIt = find(inventory.begin(), inventory.end(), "Shit Stained Underware");
-            if (underwareIt != inventory.end())
+            auto UnderwearIt = find(inventory.begin(), inventory.end(), "Shit Stained Underwear");
+            if (UnderwearIt != inventory.end())
             {
                 system("cls");
                 cout << "You have already \033[38;5;130mshit\033[0m yourself" << endl;
@@ -168,8 +168,8 @@ void roomone(vector<string>& inventory)
             else
             {
                 system("cls");
-                cout << "You \033[38;5;130mshit\033[0m your pants \n(Shit Stained Underware was added to your inventory)" << endl;
-                inventory.push_back("Shit Stained Underware");
+                cout << "You \033[38;5;130mshit\033[0m your pants \n(Shit Stained Underwear was added to your inventory)" << endl;
+                inventory.push_back("Shit Stained Underwear");
             }
         }
         //help
@@ -364,8 +364,8 @@ void roomtwo(vector<string>& inventory)
         //shitting self
         else if (toLowercase(userinput) == "shit" || toLowercase(userinput) == "shit pants" || toLowercase(userinput) == "shit myself" || toLowercase(userinput) == "take a shit")
         {
-            auto underwareIt = find(inventory.begin(), inventory.end(), "Shit Stained Underware");
-            if (underwareIt != inventory.end())
+            auto UnderwearIt = find(inventory.begin(), inventory.end(), "Shit Stained Underwear");
+            if (UnderwearIt != inventory.end())
             {
                 system("cls");
                 cout << "You have already \033[38;5;130mshit\033[0m yourself" << endl;
@@ -374,8 +374,8 @@ void roomtwo(vector<string>& inventory)
             else
             {
                 system("cls");
-                cout << "You \033[38;5;130mshit\033[0m your pants \n(Shit Stained Underware was added to your inventory)" << endl;
-                inventory.push_back("Shit Stained Underware");
+                cout << "You \033[38;5;130mshit\033[0m your pants \n(Shit Stained Underwear was added to your inventory)" << endl;
+                inventory.push_back("Shit Stained Underwear");
             }
         }
         //help
@@ -764,8 +764,8 @@ void roomthree(vector<string>& inventory)
         //shitting self
         else if (toLowercase(userinput) == "shit" || toLowercase(userinput) == "shit pants" || toLowercase(userinput) == "shit myself" || toLowercase(userinput) == "take a shit")
         {
-            auto underwareIt = find(inventory.begin(), inventory.end(), "Shit Stained Underware");
-            if (underwareIt != inventory.end())
+            auto UnderwearIt = find(inventory.begin(), inventory.end(), "Shit Stained Underwear");
+            if (UnderwearIt != inventory.end())
             {
                 system("cls");
                 cout << "You have already \033[38;5;130mshit\033[0m yourself" << endl;
@@ -774,8 +774,8 @@ void roomthree(vector<string>& inventory)
             else
             {
                 system("cls");
-                cout << "You \033[38;5;130mshit\033[0m your pants \n(Shit Stained Underware was added to your inventory)" << endl;
-                inventory.push_back("Shit Stained Underware");
+                cout << "You \033[38;5;130mshit\033[0m your pants \n(Shit Stained Underwear was added to your inventory)" << endl;
+                inventory.push_back("Shit Stained Underwear");
             }
         }
         //help
