@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream> 
 #include <string>
 #include <vector>
 #include <algorithm> //this is so the transform function can work
@@ -96,7 +96,7 @@ void roomone(vector<string>& inventory)
             if (!dooropen)
             {
                 system("cls");
-                cout << "You take a step forward towards the door and upon doing so you hear a loud \033[38;5;33mclick\033[0m echo through out the room. \nThe door slowly starts to rise up from the ground up and open revealing that their is another room just beyond this one." << endl;
+                cout << "You take a step forward towards the door and upon doing so you hear a loud \033[38;5;33mclick\033[0m echo through out the room. \nThe door slowly starts to rise up from the ground up and open revealing that there is another room just beyond this one." << endl;
                 cout << "(Once you complete the puzzle for a room the door will open you will then need to \033[38;5;206mwalk through\033[0m the door in order to travel to the next room)" << endl;
                 dooropen = true;
                 help = 2;
@@ -273,7 +273,7 @@ void roomtwo(vector<string>& inventory)
             if (FirearmIt != inventory.end())
             {
                 system("cls");
-                cout << "Looking around this new room you can tell that their are only minor differences to the previous room. \nThe room size, though still not big, is twice as big as the last room giving you more space you strech" << endl;
+                cout << "Looking around this new room you can tell that there are only minor differences to the previous room. \nThe room size, though still not big, is twice as big as the last room giving you more space you strech" << endl;
                 cout << "The lights in this room are much brighter and things are easier to see. The walls are still lined with the same yellow stained padding \nIn the middle of the room lies a wooden table where the Firearm use to lay" << endl;
                 cout << "Beyond the table lies another large metal door just like in the last room, this door is also sealed tight" << endl; 
                 cout << "(You can \033[38;5;206minspect\033[0m items as well as \033[38;5;206mtake\033[0m them if you are allowed)" << endl;
@@ -282,7 +282,7 @@ void roomtwo(vector<string>& inventory)
             else
             {
                 system("cls");
-                cout << "Looking around this new room you can tell that their are only minor differences to the previous room. \nThe room size ,though still not big, is twice as big as the last room giving you more room you strech" << endl;
+                cout << "Looking around this new room you can tell that there are only minor differences to the previous room. \nThe room size ,though still not big, is twice as big as the last room giving you more room you strech" << endl;
                 cout << "The lights in this room are much brighter and things are easier to see. The walls are still lined with the same yellow stained padding \nIn the middle of the room lies a wooden table that seems to be bolted to the ground and unable to move, laying on the table seems to to be a small Firearm" << endl;
                 cout << "Beyond the table lies another large metal door just like in the last room, this door is also sealed tight"<< endl;  
                 help = 1;
@@ -494,21 +494,22 @@ void roomthree(vector<string>& inventory)
             }
         }
         //talking
-        else if (toLowercase(userinput) == "talk to guy"  || toLowercase(userinput) == "speak to man" || toLowercase(userinput) == "converstate with man" || toLowercase(userinput) == "talk to the guy" || toLowercase(userinput) == "speak to the man" || toLowercase(userinput) == "talk" || toLowercase(userinput) == "talk to the man" || toLowercase(userinput) == "talk the man" || toLowercase(userinput) == "speak")
+        else if (toLowercase(userinput) == "talk to guy" || toLowercase(userinput) == "say hi" || toLowercase(userinput) =="say hello" || toLowercase(userinput) =="flash him" || toLowercase(userinput) =="show him my tits" || toLowercase(userinput) =="try to talk to the man" || toLowercase(userinput) =="try to get the man to talk" || toLowercase(userinput) == "speak to man" || toLowercase(userinput) == "converstate with man" || toLowercase(userinput) == "talk to the guy" || toLowercase(userinput) == "speak to the man" || toLowercase(userinput) == "talk" || toLowercase(userinput) == "talk to the man" || toLowercase(userinput) == "talk the man" || toLowercase(userinput) == "speak")
         {
             system("cls");
-            cout << "You try speaking to the man but you are quickly ignored. He seems to not care about talking only siting and staring forward" << endl;
+            cout << "You try interacting with the man but you are quickly ignored. He seems to not care about you or anything you do or have to say" << endl;
         }
         //siting at table
         else if (toLowercase(userinput) == "sit with man" || toLowercase(userinput) == "play chess" || toLowercase(userinput) == "sit in the chair" || toLowercase(userinput) == "sit down" || toLowercase(userinput) == "sit at the table" || toLowercase(userinput) == "play chess with the man" || toLowercase(userinput) == "sit with the man" || toLowercase(userinput) == "play chess with him" || toLowercase(userinput) == "play chess with him" || toLowercase(userinput) == "sit")
         {
             if (!puzzlesolved)
             {
+                system("cls");
                 attable = true;
                 cout << "You sit down in front of the quite man and get ready to play chess" << endl;
                 do
                 {   
-                    system("cls"); 
+                    
                     int randomNumber = distribution(generator);
                     cout << "You sit in front of the chess board, what would you like to do now:" << endl;
                     getline(cin, userinput);
@@ -519,6 +520,12 @@ void roomthree(vector<string>& inventory)
                     {
                         system("cls");
                         cout << "As you sit in front of the table before you lies a chess board with a soild metal playing field. \nEach piece is made out of a thick wood that is coated in a black and white paint with the white pieces being infront of you and the black being in front of him \nThe chairs and the table seem to be made out of the same wood material as the pieces only difference being that the table and chairs are bolted to the ground and seem unable to be moved" << endl;
+                    }
+                    //talking to man
+                    else if (toLowercase(userinput) == "talk to guy" || toLowercase(userinput) == "say hi" || toLowercase(userinput) == "say hello" || toLowercase(userinput) == "flash him" || toLowercase(userinput) == "show him my tits" || toLowercase(userinput) == "try to talk to the man" || toLowercase(userinput) == "try to get the man to talk" || toLowercase(userinput) == "speak to man" || toLowercase(userinput) == "converstate with man" || toLowercase(userinput) == "talk to the guy" || toLowercase(userinput) == "speak to the man" || toLowercase(userinput) == "talk" || toLowercase(userinput) == "talk to the man" || toLowercase(userinput) == "talk the man" || toLowercase(userinput) == "speak")
+                    {
+                        system("cls");
+                        cout << "You try interacting with the man but you are quickly ignored. He seems to not care about you or anything you do or have to say" << endl;
                     }
                     //inventory
                     else if (toLowercase(userinput) == "inventory" || toLowercase(userinput) == "view inventory" || toLowercase(userinput) == "check inventory") 
@@ -559,7 +566,7 @@ void roomthree(vector<string>& inventory)
 
                     }
                     //playing chess
-                    else if (toLowercase(userinput) == "play chess" || toLowercase(userinput) == "play the game" || toLowercase(userinput) == "play again" || toLowercase(userinput) == "move a piece" || toLowercase(userinput) == "move pawn" || toLowercase(userinput) == "move piece" || toLowercase(userinput) == "start chess" || toLowercase(userinput) == "move knight" || toLowercase(userinput) == "move bishop" || toLowercase(userinput) == "move rook" || toLowercase(userinput) == "begin chess game" || toLowercase(userinput) == "play")
+                    else if (toLowercase(userinput) == "play chess" || toLowercase(userinput) == "pick up piece" || toLowercase(userinput) == "play game" || toLowercase(userinput) == "play game again" || toLowercase(userinput) == "play the game" || toLowercase(userinput) == "play again" || toLowercase(userinput) == "move a piece" || toLowercase(userinput) == "move pawn" || toLowercase(userinput) == "move piece" || toLowercase(userinput) == "start chess" || toLowercase(userinput) == "move knight" || toLowercase(userinput) == "move bishop" || toLowercase(userinput) == "move rook" || toLowercase(userinput) == "begin chess game" || toLowercase(userinput) == "play")
                     {
                         if (randomNumber == 1)
                         {
