@@ -49,7 +49,14 @@ oooooooooooo oooo                       oooooooooooo                            
     cout << orangeColor << title << resetColor << endl;
     while (gameRunning)
     {
-
+        cout << "This game now uses a word bank system to help you play and have less user input error"
+            "\nThe main verbs you will use inorder to interact with the world round you are: "
+            "\n\033[38;5;206mlook \ntravel \nuse \ntake \ninspect\033[0m(this is only used for items in inventory) \n\033[38;5;206mtalk\033[0m"
+            "\nTo use the words in the bank type '\033[38;5;206mlook ___\033[0m' or '\033[38;5;206mtake ___\033[0m'"
+            "\nKeep it in a \033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m format."
+            "\n\nIn order to use an item with something type '\033[38;5;206muse ___ on ___\033[0m'" 
+            "\nYou may also use verbs that are not in the list to try and solve puzzles (\033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m)"
+            "\nYou can see this info again by typing '\033[38;5;206m/help\033[0m'" << endl;
         cout << "Please type 'start' to begin" << endl << endl;
         string userinput;
         getline(cin, userinput);
@@ -79,7 +86,7 @@ void roomone(vector<string>& inventory)
     string userinput;
     cout << "You awake in a small and poorly lit room. You can't seem to remember how you got here or what exactly is going on.\nYou notice you are wearing an orange jumpsuit, that has many pockets, with the number 61 labeled on the right sleeve." << endl;
     cout << "While standing up you feel the sting of cold marble on your bare feet. You now stand in the middle of the room." << endl;
-    cout << "(You should \033[38;5;206mlook\033[0m around the room to get a better idea of what is around you)" << endl;
+    cout << "(You should \033[38;5;206mlook room\033[0m to get a better idea of what is around you)" << endl;
 
     //roomone code
     do
@@ -91,13 +98,13 @@ void roomone(vector<string>& inventory)
         userinput = trim(userinput);
 
         //door check
-        if (toLowercase(userinput) == "door" || toLowercase(userinput) == "knock on door" || toLowercase(userinput) == "hit door" || toLowercase(userinput) == "hit the door" || toLowercase(userinput) == "walk to the door" || toLowercase(userinput) == "look at door" || toLowercase(userinput) == "check door" || toLowercase(userinput) == "check the door" || toLowercase(userinput) == "walk to door" || toLowercase(userinput) == "go to door" || toLowercase(userinput) == "try to open the door" || toLowercase(userinput) == "look at the door" || toLowercase(userinput) == "inspect the door" || toLowercase(userinput) == "go to the door" || toLowercase(userinput) == "go door" || toLowercase(userinput) == "open door" || toLowercase(userinput) == "open the door" || toLowercase(userinput) == "try door")
+        if (toLowercase(userinput) == "look door" || toLowercase(userinput) == "travel door")       
         {
             if (!dooropen)
             {
                 system("cls");
                 cout << "You take a step forward towards the door and upon doing so you hear a loud \033[38;5;33mclick\033[0m echo through out the room. \nThe door slowly starts to rise up from the ground up and open revealing that there is another room just beyond this one." << endl;
-                cout << "(Once you complete the puzzle for a room the door will open you will then need to \033[38;5;206mwalk through\033[0m the door in order to travel to the next room)" << endl;
+                cout << "(Once you complete the puzzle for a room the door will open you will then need to \033[38;5;206mtravel room\033[0m in order to travel to the next room)" << endl;
                 dooropen = true;
                 help = 2;
             }
@@ -108,27 +115,32 @@ void roomone(vector<string>& inventory)
             }
         }
         //room check
-        else if (toLowercase(userinput) == "look" || toLowercase(userinput) == "look around room" || toLowercase(userinput) == "glace" || toLowercase(userinput) == "take a look around" || toLowercase(userinput) == "take a look" || toLowercase(userinput) == "look room" || toLowercase(userinput) == "view room" || toLowercase(userinput) == "view the room" || toLowercase(userinput) == "look at the room" || toLowercase(userinput) == "look around" || toLowercase(userinput) == "look around the room")
+        else if (toLowercase(userinput) == "look room") 
         {
             system("cls");
             cout << "You look around the room to see that the walls are barely far enough apart to fully spread your arms out.\nThe walls themself are covered with padding that you would normally see in a psychiatric ward for violent patients. \nThe pads however have been here for a long time, you can tell this due to the yellowish colour that they bare" << endl;
-            cout << "Aside from the thick padding lining each wall, they are blank, execpt for the wall directly infront of you which has a large metal door that seems to be sealed tight." << endl;
-            cout << "(You can travel to places in the room if you wish, '\033[38;5;206mgo to ____\033[0m')" << endl;
+            cout << "Aside from the thick padding lining each wall, they are blank, execpt for the wall directly infront of you. \nWhich has a large metal door that seems to be sealed tight." << endl;
+            cout << "(You can travel to places in the room if you wish, '\033[38;5;206mtravel ____\033[0m')" << endl;
             help = 1;
         }
         //inventory check
-        else if (toLowercase(userinput) == "inventory" || toLowercase(userinput) == "view inventory" || toLowercase(userinput) == "check inventory" || toLowercase(userinput) == "check pockets")
+        else if (toLowercase(userinput) == "look walls" || toLowercase(userinput) == "look wall" || toLowercase(userinput) == "travel walls" || toLowercase(userinput) == "travel wall")
         {
-            if (!inventory.empty())
+            system("cls");
+            cout << "You look at the yellow stained cushioned walls, they are not as flully as you once thought \nUpon touching them you can feel the cold hard wall behind" << endl;
+        }
+        else if (toLowercase(userinput) == "inventory") 
+        {  
+            if (!inventory.empty()) 
             {
-                system("cls");
-                cout << "Inventory: ";
+                system("cls"); 
+                cout << "Inventory: "; 
 
-                auto iter = inventory.begin();
+                auto iter = inventory.begin(); 
 
 
-                cout << *iter;
-                ++iter;
+                cout << *iter; 
+                ++iter; 
 
 
                 for (; iter != inventory.end(); ++iter) {
@@ -143,7 +155,7 @@ void roomone(vector<string>& inventory)
             }
         }
         //leaving room
-        else if (toLowercase(userinput) == "leave room" || toLowercase(userinput) == "walk through door" || toLowercase(userinput) == "walk through" || toLowercase(userinput) == "walk into room" || toLowercase(userinput) == "walk into other room" || toLowercase(userinput) == "walk into the other room" || toLowercase(userinput) == "go into the other room" || toLowercase(userinput) == "enter room" || toLowercase(userinput) == "walk into the room" || toLowercase(userinput) == "walk through door" || toLowercase(userinput) == "walk through the door" || toLowercase(userinput) == "exit room" || toLowercase(userinput) == "go to next room" || toLowercase(userinput) == "leave the room" || toLowercase(userinput) == "exit the room" || toLowercase(userinput) == "go to the next room" || toLowercase(userinput) == "go through the door" || toLowercase(userinput) == "leave" || toLowercase(userinput) == "go forward" || toLowercase(userinput) == "go through door")
+        else if (toLowercase(userinput) == "travel room")    
         {
             if (dooropen)
             {
@@ -175,22 +187,13 @@ void roomone(vector<string>& inventory)
         //help
         else if (toLowercase(userinput) == "/help")
         {
-            if (help == 0)
-            {
-                system("cls");
-                cout << "You could look around the room you are in to get a better idea of what is around you \nTry typing '\033[38;5;206mlook around the room\033[0m'" << endl;
-
-            }
-            else if (help == 1)
-            {
-                system("cls");
-                cout << "The most important thing in this room right now is that door \nTry typing '\033[38;5;206mgo to the door\033[0m'" << endl;
-            }
-            else if (help == 2)
-            {
-                system("cls");
-                cout << "Now that the door is open all you have to do is walk through it into the next room \n(this is used so you can have a chance to collect any items that you may need before entering the next room) \nTry typing '\033[38;5;206mleave the room\033[0m'" << endl;
-            }
+            cout << "The main verbs you will use inorder to interact with the world round you are : "
+                "\n\033[38;5;206mlook \ntravel \nuse \ntake \ninspect\033[0m(this is only used for items in inventory) \n\033[38;5;206mtalk\033[0m"
+                "\nTo use the words in the bank type '\033[38;5;206mlook ___\033[0m' or '\033[38;5;206mtake ___\033[0m'"
+                "\nKeep it in a \033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m format."
+                "\n\nIn order to use an item with something type '\033[38;5;206muse ___ on ___\033[0m'"
+                "\nYou may also use verbs that are not in the list to try and solve puzzles (\033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m)"
+                "\nYou can see this info again by typing '\033[38;5;206m/help\033[0m'" << endl;
         }
         //anything else
         else
@@ -214,7 +217,7 @@ void roomtwo(vector<string>& inventory)
     int help = 0;
     string userinput;
     cout << "You step out of the room and you enter a new room, similar to the one you were just in but this one is bigger but not by much. \nThe door that was just open behind you slams shut preventing you from return to the room prior \nIn the center of this room lies a table with something on it" << endl;
-    cout << "(Now that you are in a new room best to \033[38;5;206mview\033[0m it and see what is in here)" << endl;
+    cout << "(Now that you are in a new room best to \033[38;5;206mlook room\033[0m and see what is in here)" << endl;
     //roomtwo code
     do
     {
@@ -224,7 +227,7 @@ void roomtwo(vector<string>& inventory)
         userinput = trim(userinput);
 
         //gun get
-        if (toLowercase(userinput) == "take firearm" || toLowercase(userinput) == "take the firearm" || toLowercase(userinput) == "take gun" || toLowercase(userinput) == "grab the firearm" || toLowercase(userinput) == "take the gun" || toLowercase(userinput) == "pick up the gun" || toLowercase(userinput) == "pick up the firearm" || toLowercase(userinput) == "pick up firearm" || toLowercase(userinput) == "pick up gun" || toLowercase(userinput) == "grab gun" || toLowercase(userinput) == "grab the gun")
+        if (toLowercase(userinput) == "take firearm") 
         {
             auto FirearmIt = find(inventory.begin(), inventory.end(), "Firearm");
             if (FirearmIt != inventory.end())
@@ -243,15 +246,22 @@ void roomtwo(vector<string>& inventory)
 
         }
         //firearm check
-        else if (toLowercase(userinput) == "inspect firearm" || toLowercase(userinput) == "look at firearm" || toLowercase(userinput) == "look at the firearm" || toLowercase(userinput) == "inspect the firearm" || toLowercase(userinput) == "look at gun" || toLowercase(userinput) == "look at the gun" || toLowercase(userinput) == "inspect the gun" || toLowercase(userinput) == "inspect gun" || toLowercase(userinput) == "view the firearm" || toLowercase(userinput) == "view firearm" || toLowercase(userinput) == "view the gun" || toLowercase(userinput) == "view gun")
+        else if (toLowercase(userinput) == "inspect firearm")
         {
             system("cls");
-            cout << "You look at the gun that sits upon the wooden table."
-                "\nIt is a standard looking firearm, something you would see a cop use in a movie,"
-                "\nit has a metal handle with no grip on it you also notice a considerable amout of wear on the gun especially on the tip of the barrel. \nWhere it seems to be blotted with bits of smoke and rust \nThis gun has defintly been fired before" << endl;
+            auto FirearmIt = find(inventory.begin(), inventory.end(), "Firearm");
+            if (FirearmIt != inventory.end()) {
+                cout << "Taking it out of your pocket you see,"
+                    "\nIt is a standard looking firearm, something you would see a cop use in a movie,"
+                    "\nit has a metal handle with no grip on it you also notice a considerable amout of wear on the gun especially on the tip of the barrel. \nWhere it seems to be blotted with bits of smoke and rust \nThis gun has defintly been fired before" << endl;
+            }
+            else
+            {
+                cout << "You do not have that item in your inventory" << endl; 
+            }
         }
         //table check
-        else if (toLowercase(userinput) == "check table" || toLowercase(userinput) == "table" || toLowercase(userinput) == "walk up to the table" || toLowercase(userinput) == "look table" || toLowercase(userinput) == "check the table" || toLowercase(userinput) == "look at table" || toLowercase(userinput) == "view table" || toLowercase(userinput) == "view the table" || toLowercase(userinput) == "look at the table" || toLowercase(userinput) == "see what is on the table" || toLowercase(userinput) == "go to table" || toLowercase(userinput) == "go to the table" || toLowercase(userinput) == "walk to the table")
+        else if (toLowercase(userinput) == "look table") 
         {
             auto FirearmIt = find(inventory.begin(), inventory.end(), "Firearm");
             if (FirearmIt != inventory.end())
@@ -266,8 +276,8 @@ void roomtwo(vector<string>& inventory)
             }
 
         }
-        //looks room
-        else if (toLowercase(userinput) == "look" || toLowercase(userinput) == "look around room" || toLowercase(userinput) == "glace" || toLowercase(userinput) == "take a look around" || toLowercase(userinput) == "take a look" || toLowercase(userinput) == "look room" || toLowercase(userinput) == "view room" || toLowercase(userinput) == "view the room" || toLowercase(userinput) == "look at the room" || toLowercase(userinput) == "look around" || toLowercase(userinput) == "look around the room")
+        //room check
+        else if (toLowercase(userinput) == "look room") 
         {
             auto FirearmIt = find(inventory.begin(), inventory.end(), "Firearm");
             if (FirearmIt != inventory.end())
@@ -289,7 +299,7 @@ void roomtwo(vector<string>& inventory)
             }
         }
         //door check
-        else if (toLowercase(userinput) == "door" || toLowercase(userinput) == "walk to the door" || toLowercase(userinput) == "knock on door" || toLowercase(userinput) == "hit door" || toLowercase(userinput) == "hit the door" || toLowercase(userinput) == "walk to door" || toLowercase(userinput) == "look at door" || toLowercase(userinput) == "check the door" || toLowercase(userinput) == "check door" || toLowercase(userinput) == "go to door" || toLowercase(userinput) == "try to open the door" || toLowercase(userinput) == "look at the door" || toLowercase(userinput) == "inspect the door" || toLowercase(userinput) == "go to the door" || toLowercase(userinput) == "go door" || toLowercase(userinput) == "open door" || toLowercase(userinput) == "open the door" || toLowercase(userinput) == "try door")
+        else if (toLowercase(userinput) == "look door" || toLowercase(userinput) == "travel door")
         {
             if (!dooropen)
             {
@@ -306,7 +316,7 @@ void roomtwo(vector<string>& inventory)
 
         }
         //inventory
-        else if (toLowercase(userinput) == "inventory" || toLowercase(userinput) == "view inventory" || toLowercase(userinput) == "check inventory")
+        else if (toLowercase(userinput) == "inventory" )
         {
             if (!inventory.empty()) {
                 system("cls");
@@ -330,17 +340,17 @@ void roomtwo(vector<string>& inventory)
             }
         }
         //self harm
-        else if (toLowercase(userinput) == "use gun on self" || toLowercase(userinput) == "kill myself" || toLowercase(userinput) == "kill self" || toLowercase(userinput) == "shoot self" || toLowercase(userinput) == "kill myself with gun" || toLowercase(userinput) == "shoot myself" || toLowercase(userinput) == "use firearm on self" || toLowercase(userinput) == "kill myself with firearm" || toLowercase(userinput) == "kill myself with the gun")
+        else if (toLowercase(userinput) == "use gun on self" || toLowercase(userinput) == "use gun myself")
         {
-            auto FirearmIt = find(inventory.begin(), inventory.end(), "Firearm");
-            if (FirearmIt != inventory.end())
+            auto FirearmIt = find(inventory.begin(), inventory.end(), "Firearm"); 
+            if (FirearmIt != inventory.end()) 
             {
                 system("cls");
                 cout << "You bring the gun up to the side of your head and you pull the trigger hoping to be free from this prison you have found your self in. \nWith the \033[1;31mclick\033[0m\n of the barrel everything turns to black" << endl;
                 cout << "\033[1;31mGAME OVER\033[0m\nEnding 4 of #" << endl << endl;
                 cout << "You have completed the Pre-Alpha for '\033[38;5;208mThe Experiment\033[0m' \nThank you for playing!" << endl;
                 cout << "Used path 4 out of 5" << endl;
-                exit(0);
+                exit(0); 
             }
             else
             {
@@ -349,7 +359,7 @@ void roomtwo(vector<string>& inventory)
             }
         }
         //leaving room
-        else if (toLowercase(userinput) == "leave room" || toLowercase(userinput) == "walk through door" || toLowercase(userinput) == "walk through" || toLowercase(userinput) == "walk into room" || toLowercase(userinput) == "walk into other room" || toLowercase(userinput) == "walk into the other room" || toLowercase(userinput) == "go into the other room" || toLowercase(userinput) == "enter room" || toLowercase(userinput) == "walk into the room" || toLowercase(userinput) == "walk through door" || toLowercase(userinput) == "walk through the door" || toLowercase(userinput) == "exit room" || toLowercase(userinput) == "go to next room" || toLowercase(userinput) == "leave the room" || toLowercase(userinput) == "exit the room" || toLowercase(userinput) == "go to the next room" || toLowercase(userinput) == "go through the door" || toLowercase(userinput) == "leave")
+        else if (toLowercase(userinput) == "travel room") 
         {
             if (dooropen)
             {
@@ -381,27 +391,13 @@ void roomtwo(vector<string>& inventory)
         //help
         else if (toLowercase(userinput) == "/help")
         {
-            if (help == 0)
-            {
-                system("cls");
-                cout << "In most rooms the best thing to start with is looking around the current room you are in to get more details on what is around you \nTry typing '\033[38;5;206mlook around the room\033[0m'" << endl;
-            }
-            else if (help == 1)
-            {
-                system("cls");
-                cout << "There is an item in this room you can collect if you wish to do so or you can check out the door that is on the other side of the room \nTry typing '\033[38;5;206mtake the Firearm\033[0m' or '\033[38;5;206mgo to the door\033[0m'" << endl;
-            }
-            else if (help == 2)
-            {
-                system("cls");
-                cout << "Just like before, the door is open and you can walk through when ever you are ready \nTry typing '\033[38;5;206mleave the room\033[0m'" << endl;
-            }
-            else if (help == 3)
-            {
-                system("cls");
-                cout << "Now that you have the Firearm best find a way into the next room, you could always start with the door \nTry typing '\033[38;5;206mgo to the door\033[0m'" << endl;
-                cout << "You can also check your inventory by typing '\033[38;5;206minventory\033[0m'" << endl;
-            }
+            cout << "The main verbs you will use inorder to interact with the world round you are : "
+                "\n\033[38;5;206mlook \ntravel \nuse \ntake \ninspect\033[0m(this is only used for items in inventory) \n\033[38;5;206mtalk\033[0m"
+                "\nTo use the words in the bank type '\033[38;5;206mlook ___\033[0m' or '\033[38;5;206mtake ___\033[0m'"
+                "\nKeep it in a \033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m format."
+                "\n\nIn order to use an item with something type '\033[38;5;206muse ___ on ___\033[0m'"
+                "\nYou may also use verbs that are not in the list to try and solve puzzles (\033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m)"
+                "\nYou can see this info again by typing '\033[38;5;206m/help\033[0m'" << endl;
         }
         //anything else
         else
@@ -450,7 +446,7 @@ void roomthree(vector<string>& inventory)
         userinput = trim(userinput);
 
         //looking
-        if (toLowercase(userinput) == "look" || toLowercase(userinput) == "glace" || toLowercase(userinput) == "take a look around" || toLowercase(userinput) == "take a look" || toLowercase(userinput) == "look room" || toLowercase(userinput) == "view room" || toLowercase(userinput) == "view the room" || toLowercase(userinput) == "look at the room" || toLowercase(userinput) == "look around" || toLowercase(userinput) == "look around the room" || toLowercase(userinput) == "look around room")
+        if (toLowercase(userinput) == "look room" || toLowercase(userinput) == "look") 
         {
             if (!mandead)
             {
@@ -476,7 +472,7 @@ void roomthree(vector<string>& inventory)
         }
 
         //inventory
-        else if (toLowercase(userinput) == "inventory" || toLowercase(userinput) == "view inventory" || toLowercase(userinput) == "check inventory")
+        else if (toLowercase(userinput) == "inventory")
         {
             if (!inventory.empty()) {
                 system("cls");
@@ -500,19 +496,19 @@ void roomthree(vector<string>& inventory)
             }
         }
         //talking
-        else if (toLowercase(userinput) == "talk to guy" || toLowercase(userinput) == "say hi" || toLowercase(userinput) == "say hello" || toLowercase(userinput) == "flash him" || toLowercase(userinput) == "show him my tits" || toLowercase(userinput) == "talk to the man" || toLowercase(userinput) == "try to talk to the man" || toLowercase(userinput) == "try to get the man to talk" || toLowercase(userinput) == "speak to man" || toLowercase(userinput) == "converstate with man" || toLowercase(userinput) == "talk to the guy" || toLowercase(userinput) == "speak to the man" || toLowercase(userinput) == "talk" || toLowercase(userinput) == "talk to the man" || toLowercase(userinput) == "talk the man" || toLowercase(userinput) == "speak")
+        else if (toLowercase(userinput) == "talk guy" || toLowercase(userinput) == "talk man")
         {
             system("cls");
-            cout << "You try interacting with the man but you are quickly ignored. He seems to not care about you or anything you do or have to say" << endl;
+            cout << "You try speaking with the man but you are quickly ignored. He seems to not care about you or anything you do or have to say" << endl;
         }
         //siting at table
-        else if (toLowercase(userinput) == "sit with man" || toLowercase(userinput) == "play chess" || toLowercase(userinput) == "sit in the chair" || toLowercase(userinput) == "sit down" || toLowercase(userinput) == "sit at the table" || toLowercase(userinput) == "play chess with the man" || toLowercase(userinput) == "sit with the man" || toLowercase(userinput) == "play chess with him" || toLowercase(userinput) == "play chess with him" || toLowercase(userinput) == "sit")
+        else if (toLowercase(userinput) == "sit chair" || toLowercase(userinput) == "use table" || toLowercase(userinput) == "use chair")
         {
             if (!puzzlesolved)
             {
                 system("cls");
                 attable = true;
-                cout << "You sit down in front of the quiet man and get ready to play chess" << endl;
+                cout << "You take a seat at the table." << endl;
                 do
                 {
 
@@ -522,19 +518,19 @@ void roomthree(vector<string>& inventory)
 
                     userinput = trim(userinput);
                     //table check
-                    if (toLowercase(userinput) == "look" || toLowercase(userinput) == "glace" || toLowercase(userinput) == "take a look around" || toLowercase(userinput) == "take a look" || toLowercase(userinput) == "look room" || toLowercase(userinput) == "view room" || toLowercase(userinput) == "view the room" || toLowercase(userinput) == "look at the room" || toLowercase(userinput) == "look around" || toLowercase(userinput) == "look around the room")
+                    if (toLowercase(userinput) == "look" || toLowercase(userinput) == "look table" || toLowercase(userinput) == "look room")
                     {
                         system("cls");
                         cout << "As you sit in front of the table before you lies a chess board with a soild metal playing field. \nEach piece is made out of a thick wood that is coated in a black and white paint with the white pieces being infront of you and the black being in front of him \nThe chairs and the table seem to be made out of the same wood material as the pieces only difference being that the table and chairs are bolted to the ground and seem unable to be moved" << endl;
                     }
                     //talking to man
-                    else if (toLowercase(userinput) == "talk to guy" || toLowercase(userinput) == "talk to the man" || toLowercase(userinput) == "say hi" || toLowercase(userinput) == "say hello" || toLowercase(userinput) == "flash him" || toLowercase(userinput) == "show him my tits" || toLowercase(userinput) == "try to talk to the man" || toLowercase(userinput) == "try to get the man to talk" || toLowercase(userinput) == "speak to man" || toLowercase(userinput) == "converstate with man" || toLowercase(userinput) == "talk to the guy" || toLowercase(userinput) == "speak to the man" || toLowercase(userinput) == "talk" || toLowercase(userinput) == "talk to the man" || toLowercase(userinput) == "talk the man" || toLowercase(userinput) == "speak")
+                    else if (toLowercase(userinput) == "talk guy" || toLowercase(userinput) == "talk man" ) 
                     {
                         system("cls");
                         cout << "You try interacting with the man but you are quickly ignored. He seems to not care about you or anything you do or have to say" << endl;
                     }
                     //inventory
-                    else if (toLowercase(userinput) == "inventory" || toLowercase(userinput) == "view inventory" || toLowercase(userinput) == "check inventory")
+                    else if (toLowercase(userinput) == "inventory")
                     {
                         if (!inventory.empty())
                         {
@@ -560,7 +556,7 @@ void roomthree(vector<string>& inventory)
                         }
                     }
                     //giving up 
-                    else if (toLowercase(userinput) == "give up" || toLowercase(userinput) == "resign" || toLowercase(userinput) == "resign game" || toLowercase(userinput) == "lose" || toLowercase(userinput) == "knock over king" || toLowercase(userinput) == "surrender game" || toLowercase(userinput) == "surrender" || toLowercase(userinput) == "forfeit" || toLowercase(userinput) == "forfeit the game" || toLowercase(userinput) == "forfeit chess")
+                    else if (toLowercase(userinput) == "give up" || toLowercase(userinput) == "resign" || toLowercase(userinput) == "resign game" || toLowercase(userinput) == "knock over king" || toLowercase(userinput) == "surrender game" || toLowercase(userinput) == "surrender" || toLowercase(userinput) == "forfeit" || toLowercase(userinput) == "forfeit the game" || toLowercase(userinput) == "forfeit chess")
                     {
                         system("cls");
                         cout << "You knock over your king in a sign of surrender for you are no match to best this chess player. \nUpon your king hitting the table you hear a loud \033[38;5;33mclick\033[0m echo through out the room \nfollowing the click you stand up out of your seat" << endl;
@@ -572,7 +568,7 @@ void roomthree(vector<string>& inventory)
 
                     }
                     //playing chess
-                    else if (toLowercase(userinput) == "play chess" || toLowercase(userinput) == "pick up piece" || toLowercase(userinput) == "play game" || toLowercase(userinput) == "play game again" || toLowercase(userinput) == "play the game" || toLowercase(userinput) == "play again" || toLowercase(userinput) == "move a piece" || toLowercase(userinput) == "move pawn" || toLowercase(userinput) == "move piece" || toLowercase(userinput) == "start chess" || toLowercase(userinput) == "move knight" || toLowercase(userinput) == "move bishop" || toLowercase(userinput) == "move rook" || toLowercase(userinput) == "begin chess game" || toLowercase(userinput) == "play")
+                    else if (toLowercase(userinput) == "play chess" || toLowercase(userinput) == "use chess" || toLowercase(userinput) == "play game") 
                     {
                         if (randomNumber == 1)
                         {
@@ -610,14 +606,14 @@ void roomthree(vector<string>& inventory)
 
                     }
                     //leave table
-                    else if (toLowercase(userinput) == "stand up" || toLowercase(userinput) == "leave the table" || toLowercase(userinput) == "leave table" || toLowercase(userinput) == "walk away from the table" || toLowercase(userinput) == "get out of the chair" || toLowercase(userinput) == "get out of chair" || toLowercase(userinput) == "stand up from table")
+                    else if (toLowercase(userinput) == "use chair" || toLowercase(userinput) == "stand chair" || toLowercase(userinput) == "leave table" || toLowercase(userinput) == "stand up")
                     {
                         cout << "You stand from out of your chair back into the middle of the room" << endl;
                         attable = false;
 
                     }
                     //killing man
-                    else if (toLowercase(userinput) == "shoot man" || toLowercase(userinput) == "kill man" || toLowercase(userinput) == "use Firearm on man" || toLowercase(userinput) == "shoot the man with the gun" || toLowercase(userinput) == "shoot the guy" || toLowercase(userinput) == "shoot chess player")
+                    else if (toLowercase(userinput) == "shoot man" || toLowercase(userinput) == "kill man" || toLowercase(userinput) == "use firearm on man" || toLowercase(userinput) == "use gun on man")
                     {
                         if (!mandead)
                         {
@@ -653,23 +649,17 @@ void roomthree(vector<string>& inventory)
                     //help
                     else if (toLowercase(userinput) == "/help")
                     {
-                        if (helpWhileSitting == 0)
-                        {
-                            system("cls");
-                            cout << "Try playing chess with him and see if that will make him respond" << endl;
-                            cout << "Try typing '\033[38;5;206mplay chess with man\033[0m'" << endl;
-                        }
-                        else if (helpWhileSitting == 1)
-                        {
-                            system("cls");
-                            cout << "It seems this man might be better at chess then you thought. Maybe there is some other way to beat this puzzle" << endl;
-                            helpWhileSitting = 2;
-                        }
-                        else if (helpWhileSitting == 2)
-                        {
-                            system("cls");
+                        cout << "The main verbs you will use inorder to interact with the world round you are : "
+                            "\n\033[38;5;206mlook \ntravel \nuse \ntake \ninspect\033[0m(this is only used for items in inventory) \n\033[38;5;206mtalk\033[0m"
+                            "\nTo use the words in the bank type '\033[38;5;206mlook ___\033[0m' or '\033[38;5;206mtake ___\033[0m'"
+                            "\nKeep it in a \033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m format."
+                            "\n\nIn order to use an item with something type '\033[38;5;206muse ___ on ___\033[0m'"
+                            "\nYou may also use verbs that are not in the list to try and solve puzzles (\033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m)"
+                            "\nYou can see this info again by typing '\033[38;5;206m/help\033[0m'" << endl << endl << endl;
+                        
+                        
                             cout << "Don't let him beat you, let him win" << endl;
-                        }
+                      
 
                     }
                     //anything else
@@ -694,7 +684,7 @@ void roomthree(vector<string>& inventory)
             }
         }
         //door check
-        else if (toLowercase(userinput) == "door" || toLowercase(userinput) == "knock on door" || toLowercase(userinput) == "hit door" || toLowercase(userinput) == "hit the door" || toLowercase(userinput) == "walk to the door" || toLowercase(userinput) == "walk to door" || toLowercase(userinput) == "look at door" || toLowercase(userinput) == "check the door" || toLowercase(userinput) == "check door" || toLowercase(userinput) == "go to door" || toLowercase(userinput) == "try to open the door" || toLowercase(userinput) == "look at the door" || toLowercase(userinput) == "inspect the door" || toLowercase(userinput) == "go to the door" || toLowercase(userinput) == "go door" || toLowercase(userinput) == "open door" || toLowercase(userinput) == "open the door" || toLowercase(userinput) == "try door")
+        else if (toLowercase(userinput) == "look door" || toLowercase(userinput) == "travel door")
         {
             system("cls");
             if (!dooropen)
@@ -709,7 +699,7 @@ void roomthree(vector<string>& inventory)
             }
         }
         //self harm ending
-        else if (toLowercase(userinput) == "use gun on self" || toLowercase(userinput) == "kill myself" || toLowercase(userinput) == "kill self" || toLowercase(userinput) == "shoot self" || toLowercase(userinput) == "kill myself with gun" || toLowercase(userinput) == "shoot myself" || toLowercase(userinput) == "use firearm on self" || toLowercase(userinput) == "kill myself with firearm" || toLowercase(userinput) == "kill myself with the gun")
+        else if (toLowercase(userinput) == "use gun on self" || toLowercase(userinput) == "use gun on myself" || toLowercase(userinput) == "kill self" || toLowercase(userinput) == "shoot self"  || toLowercase(userinput) == "use firearm on myself" || toLowercase(userinput) == "use firearm on self" )
         {
             auto FirearmIt = find(inventory.begin(), inventory.end(), "Firearm");
             if (FirearmIt != inventory.end())
@@ -729,7 +719,7 @@ void roomthree(vector<string>& inventory)
             }
         }
         //killing man
-        else if (toLowercase(userinput) == "shoot man" || toLowercase(userinput) == "kill man" || toLowercase(userinput) == "use Firearm on man" || toLowercase(userinput) == "shoot the man with the gun" || toLowercase(userinput) == "shoot the guy" || toLowercase(userinput) == "shoot chess player" || toLowercase(userinput) == "shoot the man" || toLowercase(userinput) == "kill the man")
+        else if(toLowercase(userinput) == "use gun on man" || toLowercase(userinput) == "use firearm on man")
         {
             if (!mandead)
             {
@@ -762,7 +752,7 @@ void roomthree(vector<string>& inventory)
             }
         }
         //leaving room
-        else if (toLowercase(userinput) == "leave room" || toLowercase(userinput) == "walk into room" || toLowercase(userinput) == "walk into other room" || toLowercase(userinput) == "walk into the other room" || toLowercase(userinput) == "go into the other room" || toLowercase(userinput) == "enter room" || toLowercase(userinput) == "walk into the room" || toLowercase(userinput) == "walk through door" || toLowercase(userinput) == "walk through" || toLowercase(userinput) == "walk through the door" || toLowercase(userinput) == "walk through door" || toLowercase(userinput) == "exit room" || toLowercase(userinput) == "go to next room" || toLowercase(userinput) == "leave the room" || toLowercase(userinput) == "exit the room" || toLowercase(userinput) == "go to the next room" || toLowercase(userinput) == "go through the door" || toLowercase(userinput) == "leave" || toLowercase(userinput) == "walk through the door")
+        else if (toLowercase(userinput) == "travel room") 
         {
             if (dooropen)
             {
@@ -794,17 +784,13 @@ void roomthree(vector<string>& inventory)
         //help
         else if (toLowercase(userinput) == "/help")
         {
-            if (help == 0)
-            {
-                system("cls");
-                cout << "You should start by looking around the room to get a better understanding of what makes this room different than the last two" << endl;
-            }
-            else if (help == 1)
-            {
-                system("cls");
-                cout << "Try interacting with what is in the room, like the man or the chess set" << endl;
-                cout << "Try typing '\033[38;5;206msit at the table\033[0m'" << endl;
-            }
+            cout << "The main verbs you will use inorder to interact with the world round you are : "
+                "\n\033[38;5;206mlook \ntravel \nuse \ntake \ninspect\033[0m(this is only used for items in inventory) \n\033[38;5;206mtalk\033[0m"
+                "\nTo use the words in the bank type '\033[38;5;206mlook ___\033[0m' or '\033[38;5;206mtake ___\033[0m'"
+                "\nKeep it in a \033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m format."
+                "\n\nIn order to use an item with something type '\033[38;5;206muse ___ on ___\033[0m'"
+                "\nYou may also use verbs that are not in the list to try and solve puzzles (\033[38;5;206mverb\033[0m \033[38;5;206mnoun\033[0m)"
+                "\nYou can see this info again by typing '\033[38;5;206m/help\033[0m'" << endl;
         }
         //anything else
         else
